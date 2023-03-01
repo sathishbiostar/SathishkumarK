@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        
+        <a class="navbar-brand" href="#">
+        <h3 class="text-center m-5">
+            Book Movie Tickets</h3>
+         </a>
+         <div class="col-4 mb-2" *ngFor="let details of theatreDetails">
+            <div class="card">
+              
+                     <img *ngIf="!details.thumbnail_url.includes('/map'); else mapImgBlock" src="{{details.thumbnail_url}}"  alt="multi_images_not_loaded"/>
+                     <ng-template #mapImgBlock>
+                        <img src="" alt="image_not_loaded"/>
+                     </ng-template>
+                     <div class="card-body">
+                     <h4 class="card-title">{{details.theatre_name}}</h4>
+                     
+                     <ul>
+                         <li (click)="ToBookSeats(details.booked_seats,'show1_time',details.show1_time,details,details.show1_movie)">
+                             <span>{{details.show1_movie}} &#8211;</span>
+                             <span>{{details.show1_time}}</span>
+                         </li>
+                         <li (click)="ToBookSeats(details.booked_seats,'show2_time',details.show2_time,details,details.show2_movie)">
+                             <span>{{details.show2_movie}} &#8211;</span>
+                             <span>{{details.show2_time}}</span>
+                         </li>
+                         <li (click)="ToBookSeats(details.booked_seats,'show3_time',details.show3_time,details,details.show3_movie)">
+                             <span>{{details.show3_movie}} &#8211;</span>
+                             <span>{{details.show3_time}}</span>
+                         </li>
+                         <li (click)="ToBookSeats(details.booked_seats,'show4_time',details.show4_time,details,details.show4_movie)">
+                             <span>{{details.show4_movie}} &#8211;</span>
+                             <span>{{details.show4_time}}</span>
+                         </li>
+                     </ul>
+                  </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<!-- <app-toasts aria-live="polite" aria-atomic="true"></app-toasts> -->

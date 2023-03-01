@@ -1,0 +1,27 @@
+@mixin remove_ul_defaults {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+  }
+
+    ul{
+        @include remove_ul_defaults;
+        li{
+            cursor: pointer;
+            padding: 10px 0;
+            color: #333;
+            span:first-child{
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
+        li:hover{
+            color: rgb(23, 153, 54);
+            text-decoration: underline;
+        }
+    }
+    img{
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    }

@@ -1,0 +1,28 @@
+
+<div class="modal-header">
+	<h5 class="modal-title">Available Seats for <span><b>{{bookedseats.movie_name}}</b></span> at <span><i>{{bookedseats.theatre_name}}</i></span> </h5>
+	<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      </button>
+</div>
+<div class="modal-body">
+	<div>
+        <ul>
+            <li *ngFor="let seat of seats" [class.booked] = "seat.seatstatus=='booked'" [class.selected] = "seat.checked==true" [attr.disabled]="seat.seatstatus=='booked'" (click)="seat.checked = !seat.checked">
+                {{seat.seatNo}}
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark btn-success" (click)="book()">Book</button>
+</div>
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>

@@ -1,0 +1,38 @@
+@mixin remove_ul_defaults {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+   }
+ 
+     ul{
+         @include remove_ul_defaults;
+         li{
+             padding: 20px;
+             display: inline-block;
+             border: 1px solid #ccc;
+            background: #fff;
+             margin: 5px;
+             color:rgb(3, 119, 3);
+             cursor: pointer;
+         }
+         li.selected{
+          background: rgb(3, 119, 3);
+          color: #fff;
+         }
+         li.booked{
+          color:#ccc;
+          pointer-events: none;
+         }
+         li:hover{
+           background: rgb(3, 119, 3);
+           color: #fff;
+         }
+     }
+     .modal-header h5 > span{
+      color: rgb(53, 94, 160);
+     }
+     img{
+     height: 200px;
+     width: 100%;
+     background-size: contain;
+     }
