@@ -4,4 +4,4 @@ Then type goto project folder using below command.
   > cd SathishkumarK
 Install npm packages and run the project using below command.
   > npm install
-  > npm start
+  > npm start or ng serve
