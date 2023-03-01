@@ -12,7 +12,7 @@ import { BookingMovieTicketsComponent } from "src/app/booking-movie-tickets/book
 export class MovieAndTheatreDetailsComponent implements OnInit {
    theatreDetails:any =[];
    getMoviesCurrentTiming:Date=new Date();
-
+   loaderShow:boolean=true;
   constructor(private modalService: NgbModal,private theatreAndMovieDetailsService:TheatreAndMovieDetailService,private router:Router) {
       }
 
@@ -22,6 +22,9 @@ export class MovieAndTheatreDetailsComponent implements OnInit {
   getTicketDetail(){
     this.theatreAndMovieDetailsService.getAllTheatreDetails().subscribe(details=>{
       this.theatreDetails = details.theatre;
+      this.loaderShow = false;
+     },(err)=>{
+      this.loaderShow = false;
      });
   }
   ToBookSeats(details:any,timetype:any,time:any,ticketdetails:any,moviename:any){

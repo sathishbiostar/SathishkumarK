@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
 })
 export class BookingMovieTicketsComponent implements OnInit {
   seats:any =[];
+  loaderShow:boolean=true;
   alreadyBookedSeats:any;
   @Input()
   bookedseats!: any;
@@ -22,7 +23,6 @@ export class BookingMovieTicketsComponent implements OnInit {
       this.seats.push({'seatNo':i,'seatstatus':'available','checked':false})
     }
     if(this.bookedseats.booked_seats.length>0){
-      //this.bookedseats.booked_seats = JSON.parse(this.bookedseats.booked_seats);
       this.seats.forEach((item1:any) => {
         this.bookedseats.booked_seats.forEach((item2:any) => {
          if(item1.seatNo===item2) {
@@ -45,8 +45,11 @@ export class BookingMovieTicketsComponent implements OnInit {
     this.bookedseats.booked_seats = selectedseatsarr;
     let date = new Date();
     this.bookedseats.date = this.datePipe.transform(date,"dd/MM/yyyy");
-    this.theatreAndMovieDetailsService.confirmBooking(this.bookedseats).subscribe(details=>{
+    this.theatreAndMovieDetailsService.confirmBooking(this.bookedseats).subscribe(()=>{
         this.activeModal.dismiss();
+        this.loaderShow = false;
+      },(err)=>{
+        this.loaderShow = false;
       });
   }
 
